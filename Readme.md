@@ -10,10 +10,14 @@ The test links are
 1 . localhost:8000/listingpagination/ ( for paginated list)
 
 
+example : http://localhost:8000/listingpagination/?max_price=1000&check_in=2021-6-01&check_out=2021-12-12
+
 
 
 2 . localhost:8000/listingfull/ ( full query set)
 
+
+example : http://localhost:8000/listingfull/?max_price=1000&check_in=2021-6-01&check_out=2021-12-12
 
 
 
