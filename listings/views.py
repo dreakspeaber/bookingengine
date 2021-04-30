@@ -1,7 +1,9 @@
 from listings.models import BookingInfo
 from listings.serializers import ListingAvailabilitySerializer
-from rest_framework import generics,pagination,views 
+from rest_framework.generics import ListAPIView
+from rest_framework.views import APIView
 from rest_framework.response import Response
+from rest_framework import pagination
 from django.db.models import Q
 from datetime import datetime
 
@@ -11,9 +13,9 @@ FIELD_ERROR = 'Please make sure that all variables are present and spelled corre
 DATE_FORMAT_ERROR = 'Date format is wrong. Try YYYY-MM-DD format'
 
 
-#Pagination for paginated JSON listviews
+#Pagination for paginated JSON listviews. Perpage item is kept to 3(low), to see pagination in action with the limited dataset.
 class ListPagination(pagination.PageNumberPagination):
-    page_size = 8  
+    page_size = 3  
 
 
 
@@ -27,7 +29,7 @@ class ListPagination(pagination.PageNumberPagination):
 # The first try and except looks for potential field error, and the second try identifies format error in datestring.
 
 
-class ListingListPagination(generics.ListAPIView):
+class ListingListPagination(ListAPIView):
     serializer_class = ListingAvailabilitySerializer
     pagination_class = ListPagination
 
@@ -71,7 +73,7 @@ class ListingListPagination(generics.ListAPIView):
 #To see full list of items. Not advisable for huge datasets
 
 
-class ListingListFull(views.APIView):
+class ListingListFull(APIView):
     def get(self,request):
         check_in = self.request.GET.get('check_in',None)
         check_out = self.request.GET.get('check_out',None)
