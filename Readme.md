@@ -4,8 +4,15 @@ Have successfully implemented the API requirement delivering available non block
 
 
 The test links are
- 1 . localhost:8000/listingpagination/ ( for paginated list)
- 2 . localhost:8000/listingfull/ ( full query set)
+ 
+
+
+1 . localhost:8000/listingpagination/ ( for paginated list)
+
+
+
+
+2 . localhost:8000/listingfull/ ( full query set)
 
 
 
